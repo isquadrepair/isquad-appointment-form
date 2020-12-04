@@ -10,5 +10,21 @@
   </head>
   <body>
     <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
+    <appointment-form locations=""></appointment-form>
+    <script>
+      const storesDropdown = [
+                              { location: 'Santee', open: '09', close: '4', selected: true },
+                              { location: 'Mission Valley', open: '09', close: '4' },
+                              { location: 'San Diego (Miramar)', open: '09', close: '4' },
+                              { location: 'Carlsbad', open: '9', close: '4' },
+                              { location: 'El Cajon', open: '9', close: '4' },
+                              { location: 'Encinitas', open: '9', close: '4' },
+                              { location: 'Oceanside', open: '9', close: '4' },
+                              { location: 'Mobile Service', open: '9', close: '4' },
+                            ];
+
+      var cmp = document.querySelector('appointment-form');
+      cmp.locations = storesDropdown;
+    </script>
   </body>
 </html>

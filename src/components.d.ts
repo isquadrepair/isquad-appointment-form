@@ -6,56 +6,40 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyComponent {
+    interface AppointmentForm {
         /**
           * The first name
          */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+        "locations": any[];
     }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLAppointmentFormElement extends Components.AppointmentForm, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLAppointmentFormElement: {
+        prototype: HTMLAppointmentFormElement;
+        new (): HTMLAppointmentFormElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "appointment-form": HTMLAppointmentFormElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
+    interface AppointmentForm {
         /**
           * The first name
          */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+        "locations"?: any[];
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
+        "appointment-form": AppointmentForm;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "appointment-form": LocalJSX.AppointmentForm & JSXBase.HTMLAttributes<HTMLAppointmentFormElement>;
         }
     }
 }
