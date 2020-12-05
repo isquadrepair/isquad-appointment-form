@@ -1,51 +1,50 @@
 import { Component, Prop, h, State, Watch } from '@stencil/core';
 import Dropdown from '../dropdown/dropdown';
 import hours from '../../utils/hours';
-import { format, time24To12 } from '../../utils/utils';
-import { storesDropdown } from '../../utils/stores-hours';
+import { format, getFormattedTime, time24To12 } from '../../utils/utils';
+import { storesDropdown, storeLocations } from '../../utils/stores-hours';
 @Component({
   tag: 'appointment-form',
   styleUrl: 'appointment-form.css',
   shadow: true,
 })
 export class MyComponent {
-  @State() hours: string[];
-  /**
-   * The first name
-   */
-  @Prop({ mutable: true }) locations: any[]; //= storesDropdown;
+  @State() hours: any[];
+  @Prop({ mutable: true }) locations: any = storeLocations;
 
-  private submitForm() {
-    return null;
+  changeHours(event: any) {
+    const location = event.target.value;
+    let hours = [];
+    let beginLimit = this.locations[location].open;
+    let endLimit = this.locations[location].close;
+    while (beginLimit < endLimit) {
+      hours = [...hours, getFormattedTime(beginLimit, 30)];
+      beginLimit++;
+      console.log('hours in while', hours);
+    }
+    this.hours = hours;
+    console.log('hours', hours);
+    console.log('hours', this.hours);
   }
-  private changeHours(event) {
-    console.log(event.target.value);
-    const value = event.target.value;
-    const selectedLocation = this.locations.filter(
-      ({ location }) => location == value,
+  getHours() {
+    return (
+      this.hours.map(hour => ({
+        value: hour,
+        text: hour,
+        selected: '',
+      })) || null
     );
-    console.log('selectedLocation', selectedLocation);
-    this.checkHours(selectedLocation[0]);
   }
-  private checkHours(selectedLocationHours) {
-    this.hours = hours.filter(
-      hour =>
-        hour.split(':')[0] >= selectedLocationHours['open'] &&
-        hour.split(':')[0] <= selectedLocationHours['close'],
-    );
-  }
-
   getLocations() {
-    console.log(this.locations);
-
-    const locations = this.locations.map(({ location, selected }) => ({
-      value: location,
-      text: location,
-      selected: selected,
-    }));
-
+    let locations = Object.entries(this.locations).map(
+      ([location, values]) => ({
+        value: location,
+        text: location,
+        selected: values['selected'],
+      }),
+    );
     console.log('locations', locations);
-
+    //console.log('locations', this.locations);
     return locations;
   }
   @Watch('locations')
@@ -55,11 +54,12 @@ export class MyComponent {
     }
   }
   render() {
+    this.getLocations();
     return (
       <form
         id="my-form-id"
         method="POST"
-        onSubmit={this.submitForm}
+        onSubmit={null}
         action="https://us-central1-nestjs-ionic-form-i.cloudfunctions.net/api/v1/forms"
         target="_top"
       >
@@ -70,6 +70,16 @@ export class MyComponent {
           reqSymol
           changeSelect={event => {
             this.changeHours(event);
+          }}
+        />
+
+        <Dropdown
+          labelText="Hours"
+          labelFor="hours"
+          selectOptions={this.getHours()}
+          reqSymol
+          changeSelect={event => {
+            //this.changeHours(event);
           }}
         />
         <label htmlFor="name">

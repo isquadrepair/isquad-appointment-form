@@ -7,10 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface AppointmentForm {
-        /**
-          * The first name
-         */
-        "locations": any[];
+        "locations": any;
     }
 }
 declare global {
@@ -26,10 +23,7 @@ declare global {
 }
 declare namespace LocalJSX {
     interface AppointmentForm {
-        /**
-          * The first name
-         */
-        "locations"?: any[];
+        "locations"?: any;
     }
     interface IntrinsicElements {
         "appointment-form": AppointmentForm;

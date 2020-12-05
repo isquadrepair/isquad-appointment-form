@@ -8,7 +8,13 @@ interface props {
   changeSelect: Function;
 }
 
-export const Dropdown: FunctionalComponent<any> = ({ labelText, labelFor, selectOptions, reqSymol, changeSelect }: props) => (
+const Dropdown: FunctionalComponent<any> = ({
+  labelText,
+  labelFor,
+  selectOptions,
+  reqSymol,
+  changeSelect,
+}: props) => (
   <Fragment>
     <label htmlFor={labelFor}>
       {labelText} {reqSymol && <span class="forms-req-symbol">*</span>}
@@ -17,15 +23,16 @@ export const Dropdown: FunctionalComponent<any> = ({ labelText, labelFor, select
       name={labelFor}
       required
       class="select-css"
-      onChange={(event) => {
+      onChange={event => {
         changeSelect(event);
       }}
     >
-      {selectOptions.map(({ value, text, selected }) => (
-        <option value={value} selected={selected}>
-          {text}
-        </option>
-      ))}
+      {selectOptions &&
+        selectOptions.map(({ value, text, selected }) => (
+          <option value={value} selected={selected}>
+            {text}
+          </option>
+        ))}
     </select>
   </Fragment>
 );
