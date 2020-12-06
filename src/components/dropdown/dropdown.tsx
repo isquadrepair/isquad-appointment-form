@@ -3,6 +3,7 @@ import { Fragment, FunctionalComponent, h } from '@stencil/core';
 interface props {
   labelText: string;
   labelFor: string;
+  mainSelectOption;
   selectOptions: [{ value: string; text: string; selected: boolean }];
   reqSymol: string;
   changeSelect: Function;
@@ -11,6 +12,7 @@ interface props {
 const Dropdown: FunctionalComponent<any> = ({
   labelText,
   labelFor,
+  mainSelectOption,
   selectOptions,
   reqSymol,
   changeSelect,
@@ -27,6 +29,11 @@ const Dropdown: FunctionalComponent<any> = ({
         changeSelect(event);
       }}
     >
+      {mainSelectOption && (
+        <option value="" selected={false}>
+          {mainSelectOption}
+        </option>
+      )}
       {selectOptions &&
         selectOptions.map(({ value, text, selected }) => (
           <option value={value} selected={selected}>

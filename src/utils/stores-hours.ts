@@ -10,10 +10,10 @@ export const storesDropdown = [
 ];
 export const storeLocations = {
   'Santee': {
-    Monday: { from: 6, to: 5, closed: false },
-    Tuesday: { from: 6, to: 5, closed: false },
-    Wednesday: { from: 6, to: 5, closed: false },
-    Thursday: { from: 6, to: 5, closed: false },
+    Monday: { from: 1, to: 22, closed: false },
+    Tuesday: { from: 6, to: 24, closed: false },
+    Wednesday: { from: 6, to: 11,closed: false },
+    Thursday: { from: 6, to: 8, closed: false },
     Friday: { from: 6, to: 5, closed: false },
     Saturday: { from: 6, to: 5, closed: false },
     Sunday: { from: 6, to: 5, closed: false },

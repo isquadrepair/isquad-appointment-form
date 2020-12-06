@@ -31,12 +31,12 @@ export function getDayOfWeek(date) {
   return isNaN(dayOfWeek)
     ? null
     : [
-        'Sunday',
         'Monday',
         'Tuesday',
         'Wednesday',
         'Thursday',
         'Friday',
         'Saturday',
+        'Sunday',
       ][dayOfWeek];
 }
