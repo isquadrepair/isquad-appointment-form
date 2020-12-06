@@ -9,12 +9,29 @@ export const storesDropdown = [
   { location: 'Mobile Service', open: '9', close: '4' },
 ];
 export const storeLocations = {
-  'Santee': { open: 2, close: 4, selected: true },
-  'Mission Valley': { open: 4, close: 6 },
-  'San Diego (Miramar)': { open: 8, close: 7 },
-  'Carlsbad': { open: 9, close: 24 },
-  'El Cajon': { open: 4, close: 9 },
-  'Encinitas': { open: 3, close: 5 },
-  'Oceanside': { open: 8, close: 9 },
-  'Mobile Service': { open:12, close: 12 },
+  'Santee': {
+    Monday: { from: 6, to: 5, closed: false },
+    Tuesday: { from: 6, to: 5, closed: false },
+    Wednesday: { from: 6, to: 5, closed: false },
+    Thursday: { from: 6, to: 5, closed: false },
+    Friday: { from: 6, to: 5, closed: false },
+    Saturday: { from: 6, to: 5, closed: false },
+    Sunday: { from: 6, to: 5, closed: false },
+    selected: false
+  },
+  'Mission Valley': {
+    monday: { from: 6, to: 5, closed: false },
+    tuesday: { from: 6, to: 5, closed: false },
+    wednesday: { from: 6, to: 5, closed: false },
+    thursday: { from: 6, to: 5, closed: false },
+    friday: { from: 6, to: 5, closed: false },
+    saturday: { from: 6, to: 5, closed: false },
+    sunday: { from: 6, to: 5, closed: false },
+  },
+  'San Diego (Miramar)': { from: 6, to: 5, closed: false },
+  'Carlsbad': { from: 6, to: 5, closed: false },
+  'El Cajon': { from: 6, to: 5, closed: false },
+  'Encinitas': { from: 6, to: 5, closed: false },
+  'Oceanside': { from: 6, to: 5, closed: false },
+  'Mobile Service': { from: 6, to: 5, closed: false },
 };

@@ -1,39 +1,52 @@
 import { Component, Prop, h, State, Watch } from '@stencil/core';
 import Dropdown from '../dropdown/dropdown';
-import hours from '../../utils/hours';
-import { format, getFormattedTime, time24To12 } from '../../utils/utils';
-import { storesDropdown, storeLocations } from '../../utils/stores-hours';
+import { getFormattedTime, getDayOfWeek } from '../../utils/utils';
+import { storeLocations } from '../../utils/stores-hours';
+
 @Component({
   tag: 'appointment-form',
   styleUrl: 'appointment-form.css',
   shadow: true,
 })
 export class MyComponent {
-  @State() hours: any[];
+  @State() hours: any[] = [];
+  @State() dayOfWeek: string = '';
   @Prop({ mutable: true }) locations: any = storeLocations;
+  @State() selectedLocation: string;
+  @Prop() minutesStep: string;
 
-  changeHours(event: any) {
-    const location = event.target.value;
-    let hours = [];
-    let beginLimit = this.locations[location].open;
-    let endLimit = this.locations[location].close;
-    while (beginLimit < endLimit) {
-      hours = [...hours, getFormattedTime(beginLimit, 30)];
-      beginLimit++;
-      console.log('hours in while', hours);
+  changeDate(event) {
+    const currentDate = event.target.value;
+    console.log('eve0', currentDate);
+    this.dayOfWeek = getDayOfWeek(currentDate);
+    console.log('eve0', this.dayOfWeek);
+    this.changeHours();
+  }
+  changeHours() {
+    if (this.dayOfWeek && this.selectedLocation) {
+      let hours = [];
+      let beginLimit = this.locations[this.selectedLocation][this.dayOfWeek]
+        .from;
+      let endLimit = this.locations[this.selectedLocation][this.dayOfWeek].to;
+      while (beginLimit < endLimit) {
+        hours = [
+          ...hours,
+          getFormattedTime(beginLimit, this.minutesStep || 30),
+        ];
+        beginLimit++;
+        console.log('hours in while', hours);
+      }
+      this.hours = hours;
+      console.log('hours', hours);
+      console.log('hours', this.hours);
     }
-    this.hours = hours;
-    console.log('hours', hours);
-    console.log('hours', this.hours);
   }
   getHours() {
-    return (
-      this.hours.map(hour => ({
-        value: hour,
-        text: hour,
-        selected: '',
-      })) || null
-    );
+    return this.hours.map(hour => ({
+      value: hour,
+      text: hour,
+      selected: '',
+    }));
   }
   getLocations() {
     let locations = Object.entries(this.locations).map(
@@ -44,7 +57,6 @@ export class MyComponent {
       }),
     );
     console.log('locations', locations);
-    //console.log('locations', this.locations);
     return locations;
   }
   @Watch('locations')
@@ -54,7 +66,6 @@ export class MyComponent {
     }
   }
   render() {
-    this.getLocations();
     return (
       <form
         id="my-form-id"
@@ -69,17 +80,7 @@ export class MyComponent {
           selectOptions={this.getLocations()}
           reqSymol
           changeSelect={event => {
-            this.changeHours(event);
-          }}
-        />
-
-        <Dropdown
-          labelText="Hours"
-          labelFor="hours"
-          selectOptions={this.getHours()}
-          reqSymol
-          changeSelect={event => {
-            //this.changeHours(event);
+            this.selectedLocation = event.target.value;
           }}
         />
         <label htmlFor="name">
@@ -107,43 +108,24 @@ export class MyComponent {
         <label htmlFor="date">
           Date <span class="forms-req-symbol">*</span>
         </label>
-        <input name="date" id="appointment-date" type="date" value="" />
-        <label htmlFor="time">
-          Time <span class="forms-req-symbol">*</span>
-        </label>
-        <select name="time" required class="select-css">
-          <option value="Select Time">Select Time</option>
-          <option value="09:00">9:00 AM</option>
-          <option value="09:30" class="hidden-encinitas">
-            9:30 AM
-          </option>
-          <option value="10:00" class="hidden-encinitas">
-            10:00 AM
-          </option>
-          <option value="10:30">10:30 AM</option>
-          <option value="11:00">11:00 AM</option>
-          <option value="11:30">11:30 AM</option>
-          <option value="12:00">12:00 AM</option>
-          <option value="12:30">12:30 PM</option>
-          <option value="13:00">1:00 PM</option>
-          <option value="13:30">1:30 PM</option>
-          <option value="14:00">2:00 PM</option>
-          <option value="14:30">2:30 PM</option>
-          <option value="15:00">3:00 PM</option>
-          <option value="15:30">3:30 PM</option>
-          <option value="16:00">4:00 PM</option>
-          <option value="16:30">4:30 PM</option>
-          <option value="17:00">5:00 PM</option>
-          <option value="17:30" class="hidden-encinitas">
-            5:30 PM
-          </option>
-          <option value="18:00" class="hidden-encinitas">
-            6:00 PM
-          </option>
-          <option value="18:30" class="hidden-encinitas">
-            6:30 PM
-          </option>
-        </select>
+        <input
+          name="date"
+          id="appointment-date"
+          type="date"
+          //value={this.dayOfWeek}
+          onChange={event => {
+            this.changeDate(event);
+          }}
+        />
+        <Dropdown
+          labelText="Time"
+          labelFor="time"
+          selectOptions={this.getHours()}
+          reqSymol={true}
+          changeSelect={event => {
+            // this.changeHours(event);
+          }}
+        />
         <label htmlFor="deviceType">
           Type of Device <span class="forms-req-symbol">*</span>
         </label>

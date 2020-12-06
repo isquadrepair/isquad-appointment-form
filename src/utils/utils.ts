@@ -26,3 +26,17 @@ export const getFormattedTime = function (hour, min) {
   min = ('' + min).length > 1 ? min : '0' + min;
   return hour + ':' + min + ' ' + postfix;
 };
+export function getDayOfWeek(date) {
+  var dayOfWeek = new Date(date).getDay();
+  return isNaN(dayOfWeek)
+    ? null
+    : [
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+      ][dayOfWeek];
+}
