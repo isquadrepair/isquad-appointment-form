@@ -11,7 +11,7 @@ export const storeLocationsDropdown = {
   },
   'El Cajon': {
     Monday: { from: 9, to: 19, closed: false },
-    Tuesday: { from: 9, to: 19, closed: true },
+    Tuesday: { from: 9, to: 19, closed: false },
     Wednesday: { from: 9, to: 19, closed: false },
     Thursday: { from: 9, to: 19, closed: false },
     Friday: { from: 9, to: 19, closed: false },
@@ -21,7 +21,7 @@ export const storeLocationsDropdown = {
   },
   'Mission Valley': {
     Monday: { from: 9, to: 19, closed: false },
-    Tuesday: { from: 9, to: 19, closed: true },
+    Tuesday: { from: 9, to: 19, closed: false },
     Wednesday: { from: 9, to: 19, closed: false },
     Thursday: { from: 9, to: 19, closed: false },
     Friday: { from: 9, to: 19, closed: false },
@@ -31,7 +31,7 @@ export const storeLocationsDropdown = {
   },
   'Santee': {
     Monday: { from: 9, to: 19, closed: false },
-    Tuesday: { from: 9, to: 19, closed: true },
+    Tuesday: { from: 9, to: 19, closed: false },
     Wednesday: { from: 9, to: 19, closed: false },
     Thursday: { from: 9, to: 19, closed: false },
     Friday: { from: 10, to: 19, closed: false },
@@ -41,7 +41,7 @@ export const storeLocationsDropdown = {
   },
   'Encinitas': {
     Monday: { from: 10, to: 17, closed: false },
-    Tuesday: { from: 10, to: 17, closed: true },
+    Tuesday: { from: 10, to: 17, closed: false },
     Wednesday: { from: 10, to: 17, closed: false },
     Thursday: { from: 10, to: 17, closed: false },
     Friday: { from: 10, to: 17, closed: false },
@@ -51,7 +51,7 @@ export const storeLocationsDropdown = {
   },
   'Carlsbad': {
     Monday: { from: 10, to: 18, closed: false },
-    Tuesday: { from: 10, to: 18, closed: true },
+    Tuesday: { from: 10, to: 18, closed: false },
     Wednesday: { from: 10, to: 18, closed: false },
     Thursday: { from: 10, to: 18, closed: false },
     Friday: { from: 10, to: 18, closed: false },
@@ -61,7 +61,7 @@ export const storeLocationsDropdown = {
   },
   'Oceanside': {
     Monday: { from: 10, to: 18, closed: false },
-    Tuesday: { from: 10, to: 18, closed: true },
+    Tuesday: { from: 10, to: 18, closed: false },
     Wednesday: { from: 10, to: 18, closed: false },
     Thursday: { from: 10, to: 18, closed: false },
     Friday: { from: 10, to: 18, closed: false },
@@ -71,7 +71,7 @@ export const storeLocationsDropdown = {
   },
   'Mobile Service': {
     Monday: { from: 9, to: 19, closed: false },
-    Tuesday: { from: 9, to: 19, closed: true },
+    Tuesday: { from: 9, to: 19, closed: false },
     Wednesday: { from: 9, to: 19, closed: false },
     Thursday: { from: 9, to: 19, closed: false },
     Friday: { from: 10, to: 19, closed: false },
