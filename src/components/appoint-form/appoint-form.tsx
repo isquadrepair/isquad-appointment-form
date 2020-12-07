@@ -8,7 +8,7 @@ import DateField from '../Fields/DateField/DateField';
 import TimeField from '../Fields/TimeField/TimeField';
 @Component({
   tag: 'appointment-form',
-  //styleUrl: 'appointment-form.css',
+  styleUrl: 'appointment-form.css',
   shadow: true,
 })
 export class MyComponent {
