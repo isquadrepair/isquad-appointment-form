@@ -1,4 +1,4 @@
-import { FunctionalComponent, Fragment, h } from '@stencil/core';
+import { FunctionalComponent, h } from '@stencil/core';
 import Dropdown from '../../dropdown/dropdown';
 
 interface TimeFieldProps {
@@ -19,9 +19,6 @@ const TimeField: FunctionalComponent<TimeFieldProps> = ({ hours }) => {
       mainSelectOption="Select Time"
       selectOptions={selectOptions}
       reqSymol={true}
-      changeSelect={event => {
-        // this.changeHours(event);
-      }}
     />
   );
 };

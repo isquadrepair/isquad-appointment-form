@@ -1,37 +1,82 @@
-export const storesDropdown = [
-  { location: 'Santee', open: '09', close: '4', selected: true },
-  { location: 'Mission Valley', open: '09', close: '4' },
-  { location: 'San Diego (Miramar)', open: '09', close: '4' },
-  { location: 'Carlsbad', open: '9', close: '4' },
-  { location: 'El Cajon', open: '9', close: '4' },
-  { location: 'Encinitas', open: '9', close: '4' },
-  { location: 'Oceanside', open: '9', close: '4' },
-  { location: 'Mobile Service', open: '9', close: '4' },
-];
-export const storeLocations = {
-  'Santee': {
-    Monday: { from: 1, to: 22, closed: false },
-    Tuesday: { from: 6, to: 24, closed: false },
-    Wednesday: { from: 6, to: 11,closed: false },
-    Thursday: { from: 6, to: 8, closed: false },
-    Friday: { from: 6, to: 5, closed: false },
-    Saturday: { from: 6, to: 5, closed: false },
-    Sunday: { from: 6, to: 5, closed: false },
+export const storeLocationsDropdown = {
+  'San Diego (Miramar)': {
+    Monday: { from: 9, to: 19, closed: false },
+    Tuesday: { from: 9, to: 19, closed: true },
+    Wednesday: { from: 9, to: 19, closed: false },
+    Thursday: { from: 9, to: 19, closed: false },
+    Friday: { from: 10, to: 19, closed: false },
+    Saturday: { from: 10, to: 17, closed: false },
+    Sunday: { closed: true },
+    selected: false
+  },
+  'El Cajon': {
+    Monday: { from: 9, to: 19, closed: false },
+    Tuesday: { from: 9, to: 19, closed: true },
+    Wednesday: { from: 9, to: 19, closed: false },
+    Thursday: { from: 9, to: 19, closed: false },
+    Friday: { from: 10, to: 19, closed: false },
+    Saturday: { from: 9, to: 17, closed: false },
+    Sunday: { from: 9, to: 19, closed: false },
     selected: false
   },
   'Mission Valley': {
-    monday: { from: 6, to: 5, closed: false },
-    tuesday: { from: 6, to: 5, closed: false },
-    wednesday: { from: 6, to: 5, closed: false },
-    thursday: { from: 6, to: 5, closed: false },
-    friday: { from: 6, to: 5, closed: false },
-    saturday: { from: 6, to: 5, closed: false },
-    sunday: { from: 6, to: 5, closed: false },
+    Monday: { from: 9, to: 20, closed: false },
+    Tuesday: { from: 9, to: 20, closed: true },
+    Wednesday: { from: 9, to: 20, closed: false },
+    Thursday: { from: 9, to: 20, closed: false },
+    Friday: { from: 9, to: 20, closed: false },
+    Saturday: { from: 9, to: 20, closed: false },
+    Sunday: { from: 9, to: 20, closed: true },
+    selected: false
   },
-  'San Diego (Miramar)': { from: 6, to: 5, closed: false },
-  'Carlsbad': { from: 6, to: 5, closed: false },
-  'El Cajon': { from: 6, to: 5, closed: false },
-  'Encinitas': { from: 6, to: 5, closed: false },
-  'Oceanside': { from: 6, to: 5, closed: false },
-  'Mobile Service': { from: 6, to: 5, closed: false },
+  'Santee': {
+    Monday: { from: 9, to: 19, closed: false },
+    Tuesday: { from: 9, to: 19, closed: true },
+    Wednesday: { from: 9, to: 19, closed: false },
+    Thursday: { from: 9, to: 19, closed: false },
+    Friday: { from: 10, to: 19, closed: false },
+    Saturday: { from: 10, to: 17, closed: false },
+    Sunday: { from: 11, to: 16, closed: true },
+    selected: false
+  },
+  'Encinitas': {
+    Monday: { from: 9, to: 19, closed: false },
+    Tuesday: { from: 9, to: 19, closed: true },
+    Wednesday: { from: 9, to: 19, closed: false },
+    Thursday: { from: 9, to: 19, closed: false },
+    Friday: { from: 10, to: 19, closed: false },
+    Saturday: { from: 10, to: 17, closed: false },
+    Sunday: { closed: true },
+    selected: false
+  },
+  'Carlsbad': {
+    Monday: { from: 9, to: 19, closed: false },
+    Tuesday: { from: 9, to: 19, closed: true },
+    Wednesday: { from: 9, to: 19, closed: false },
+    Thursday: { from: 9, to: 19, closed: false },
+    Friday: { from: 10, to: 19, closed: false },
+    Saturday: { from: 10, to: 17, closed: false },
+    Sunday: { closed: true },
+    selected: false
+  },
+  'Oceanside': {
+    Monday: { from: 9, to: 19, closed: false },
+    Tuesday: { from: 9, to: 19, closed: true },
+    Wednesday: { from: 9, to: 19, closed: false },
+    Thursday: { from: 9, to: 19, closed: false },
+    Friday: { from: 10, to: 19, closed: false },
+    Saturday: { from: 10, to: 17, closed: false },
+    Sunday: { closed: true },
+    selected: false
+  },
+  'Mobile Service': {
+    Monday: { from: 9, to: 19, closed: false },
+    Tuesday: { from: 9, to: 19, closed: true },
+    Wednesday: { from: 9, to: 19, closed: false },
+    Thursday: { from: 9, to: 19, closed: false },
+    Friday: { from: 10, to: 19, closed: false },
+    Saturday: { from: 10, to: 17, closed: false },
+    Sunday: { closed: true },
+    selected: false
+  },
 };

@@ -1,4 +1,4 @@
-import { FunctionalComponent, Fragment, h } from '@stencil/core';
+import { FunctionalComponent, h } from '@stencil/core';
 import Dropdown from '../../dropdown/dropdown';
 
 const LocationField: FunctionalComponent<any> = ({
