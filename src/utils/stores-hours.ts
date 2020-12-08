@@ -34,9 +34,9 @@ export const storeLocationsDropdown = {
     Tuesday: { from: 9, to: 19, closed: false },
     Wednesday: { from: 9, to: 19, closed: false },
     Thursday: { from: 9, to: 19, closed: false },
-    Friday: { from: 10, to: 19, closed: false },
+    Friday: { from: 9, to: 19, closed: false },
     Saturday: { from: 10, to: 19, closed: false },
-    Sunday: { from: 11, to: 17, closed: true },
+    Sunday: { from: 11, to: 16, closed: true },
     selected: false,
   },
   'Encinitas': {
