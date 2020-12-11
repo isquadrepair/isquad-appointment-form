@@ -15,15 +15,17 @@
     "loader/"
   ],
   "scripts": {
-    "build": "stencil build --docs",
-    "start": "stencil build --dev --watch --serve",
+    "build": "stencil build",
+    "docs": "stencil build --docs",
+    "prerender": "stencil build --prod --prerender",
+    "serve": "stencil build --prod --watch --serve",
+    "start": "stencil build --dev --watch --serve --port=8080",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate"
   },
   "dependencies": {
-    "@stencil/core": "^2.0.1",
-    "moment": "^2.29.1"
+    "@stencil/core": "^2.3.0"
   },
   "license": "MIT"
 }

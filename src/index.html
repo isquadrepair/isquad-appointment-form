@@ -12,7 +12,9 @@
 </head>
 
 <body>
-  <appointment-form minutes-step="30"></appointment-form>
+  <appointment-form minutes-step="30"
+    form-submit-url="https://us-central1-nestjs-ionic-form-i.cloudfunctions.net/api/v1/forms/sendMail">
+  </appointment-form>
   <script>
     // Hours in military format
     const storeLocationsDropdown = {

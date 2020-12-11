@@ -19,6 +19,7 @@ const TimeField: FunctionalComponent<TimeFieldProps> = ({ hours }) => {
       mainSelectOption="Select Time"
       selectOptions={selectOptions}
       reqSymol={true}
+      changeSelect={() => {}}
     />
   );
 };

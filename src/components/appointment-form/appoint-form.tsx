@@ -8,13 +8,17 @@ import DateField from '../Fields/DateField/DateField';
 import TimeField from '../Fields/TimeField/TimeField';
 @Component({
   tag: 'appointment-form',
-  styleUrl: 'appointment-form.css',
-  shadow: true,
+  //styleUrl: 'appointment-form.css',
+  shadow: false,
 })
 export class MyComponent {
   @State() hours: any[] = [];
   @State() dayOfWeek: string = '';
   @State() closed: boolean;
+  @State() isMailSent: boolean;
+  @State() sendButtonText: string = 'Send';
+  @Prop() formSubmitUrl: string =
+    'https://us-central1-nestjs-ionic-form-i.cloudfunctions.net/api/v1/forms/sendMail';
   @Prop({ mutable: true }) locations: any = storeLocationsDropdown;
   @State() selectedLocation: string;
   @Prop() minutesStep: string;
@@ -33,7 +37,7 @@ export class MyComponent {
       let { from: hoursFrom, to: hoursTo, closed } = locationHours;
       if (!closed) {
         while (hoursFrom < hoursTo) {
-          let hoursFromWithMinutes = `${hoursFrom}:${this.minutesStep || "30"}`;
+          let hoursFromWithMinutes = `${hoursFrom}:${this.minutesStep || '30'}`;
           hours = [
             ...hours,
             {
@@ -41,7 +45,7 @@ export class MyComponent {
                 hoursFrom > 9
                   ? `${hoursFromWithMinutes}`
                   : `0${hoursFromWithMinutes}`,
-              text: getFormattedTime(hoursFrom, this.minutesStep || "30"),
+              text: getFormattedTime(hoursFrom, this.minutesStep || '30'),
             },
           ];
           hoursFrom++;
@@ -59,14 +63,32 @@ export class MyComponent {
       throw new Error('Locations: required');
     }
   }
+  async handleSubmit(event) {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    try {
+      this.sendButtonText = 'Sending...';
+      const response = await fetch(this.formSubmitUrl, {
+        method: 'POST',
+        body: data,
+      });
+      if (response.ok) {
+        this.sendButtonText = 'Send Successful.';
+      } else {
+        this.sendButtonText = 'Send Failed!';
+      }
+    } catch (error) {
+      this.sendButtonText = 'Send Failed!';
+    }
+  }
   render() {
     return (
       <form
         id="my-form-id"
         method="POST"
-        onSubmit={null}
-        action="https://us-central1-nestjs-ionic-form-i.cloudfunctions.net/api/v1/forms"
-        target="_top"
+        onSubmit={event => {
+          this.handleSubmit(event);
+        }}
       >
         <LocationField
           locations={this.locations}
@@ -90,14 +112,12 @@ export class MyComponent {
           Message <span class="forms-req-symbol">*</span>
         </label>
         <textarea name="message" cols={30} rows={10} required></textarea>
-        <input type="submit" id="submit-button" value="Send" />
-        <p id="submit-success"></p>
-        <div submit-success="">
-          <template type="amp-mustache">Send successful!</template>
-        </div>
-        <div submit-error="">
-          <template type="amp-mustache">Send failed!</template>
-        </div>
+        <input
+          type="submit"
+          id="submit-button"
+          value={this.sendButtonText}
+          disabled={this.isMailSent}
+        />
       </form>
     );
   }
