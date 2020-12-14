@@ -12,12 +12,22 @@
 </head>
 
 <body>
-  <appointment-form minutes-step="30"
-    form-submit-url="https://us-central1-nestjs-ionic-form-i.cloudfunctions.net/api/v1/forms/sendMail">
-  </appointment-form>
+  <appointment-form></appointment-form>
   <script>
+    const minutesStep = "30"
+    const formSubmitUrl = "https://us-central1-nestjs-ionic-form-i.cloudfunctions.net/api/v1/forms/sendMails"
+    const isMobileAppointment = true;
+    const mobileHours = {
+      Monday: { from: 10, to: 19, closed: false },
+      Tuesday: { from: 10, to: 19, closed: false },
+      Wednesday: { from: 10, to: 19, closed: false },
+      Thursday: { from: 10, to: 19, closed: false },
+      Friday: { from: 10, to: 19, closed: false },
+      Saturday: { from: 10, to: 19, closed: false },
+      Sunday: { from: 10, to: 19, closed: false },
+    }
     // Hours in military format
-    const storeLocationsDropdown = {
+    const locations = {
       'San Diego (Miramar)': {
         Monday: { from: 10, to: 19, closed: false },
         Tuesday: { from: 10, to: 19, closed: false },
@@ -100,7 +110,12 @@
       },
     };
     var cmp = document.querySelector('appointment-form');
-    cmp.locations = storeLocationsDropdown;
+    cmp.locations = locations;
+    cmp.minutesStep = minutesStep;
+    cmp.formSubmitUrl = formSubmitUrl
+    cmp.isMobileAppointment = isMobileAppointment;
+    cmp.mobileHours = mobileHours;
+
   </script>
 </body>
 
