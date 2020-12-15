@@ -19,8 +19,7 @@ export class FormService {
     }
   }
   getHours(hours, minutesStep) {
-    let { from: hoursFrom, to: hoursTo, closed } = hours;
-
+    let { from: hoursFrom, to: hoursTo } = hours;
     let hoursArray = [];
     while (hoursFrom < hoursTo) {
       let hoursFromWithMinutes = `${hoursFrom}:${minutesStep || '30'}`;

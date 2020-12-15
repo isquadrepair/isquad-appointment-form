@@ -1,6 +1,6 @@
 {
   "name": "@isquadrepair/appointment-form",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Stencil Component Starter",
   "main": "dist/index.cjs.js",
   "module": "dist/custom-elements/index.js",
@@ -17,12 +17,18 @@
   "scripts": {
     "build": "stencil build",
     "docs": "stencil build --docs",
+    "prod": "stencil build --prod",
     "prerender": "stencil build --prod --prerender",
     "serve": "stencil build --prod --watch --serve",
     "start": "stencil build --dev --watch --serve --port=8080",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com:isquadrepair/isquad-appointment-form.git",
+    "directory": "@isquadrepair/isquad-appointment-form"
   },
   "dependencies": {
     "@stencil/core": "^2.3.0"
