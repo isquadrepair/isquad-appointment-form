@@ -100,7 +100,7 @@ export class MyComponent {
           }}
         />
         {this.closed ? (
-          <label>Hours: Closed</label>
+          <label>Hours: Closed {this.dayOfWeek ? `on ${this.dayOfWeek}`: ""}</label>
         ) : (
           <TimeField hours={this.hours} />
         )}
