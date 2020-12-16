@@ -83,12 +83,14 @@ Build the component for production, run:
 npm run build
 ```
 
-- Copy `dist/isquad-appointment-form` directory in to your project
+- Copy `isquad-appointment-form` directory form `/dist` in to your project
 
 To use this component copy the following into your Html file, just use it like any other HTML element:
 
 ```html
 <appointment-form></appointment-form>
+<script type="module" src="/your-project-folder/isquad-appointment-form/isquad-appointment-form.esm.js"></script>
+<script nomodule src="/your-project-folder/isquad-appointment-form/isquad-appointment-form.js"></script>
 <script>
   const minutesStep = '30';
   const formSubmitUrl =
