@@ -47,6 +47,7 @@ export class MyComponent {
     }
   }
   updateHours(hours: hours) {
+    const { closed } = hours;
     if (!closed) {
       this.hours = this.formService.getHours(hours, this.minutesStep);
       this.closed = false;

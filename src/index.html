@@ -16,7 +16,7 @@
   <script>
     const minutesStep = "30"
     const formSubmitUrl = "https://us-central1-nestjs-ionic-form-i.cloudfunctions.net/api/v1/forms/sendMails"
-    const isMobileAppointment = true;
+    const isMobileAppointment = false;
     const mobileHours = {
       Monday: { from: 10, to: 19, closed: false },
       Tuesday: { from: 10, to: 19, closed: false },
@@ -115,7 +115,6 @@
     cmp.formSubmitUrl = formSubmitUrl
     cmp.isMobileAppointment = isMobileAppointment;
     cmp.mobileHours = mobileHours;
-
   </script>
 </body>
 
