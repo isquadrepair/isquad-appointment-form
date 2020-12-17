@@ -22,7 +22,7 @@ export class MyComponent {
   @State() closed: boolean;
   @State() sendButton: SendButton;
   @Prop() formSubmitUrl: string =
-    'https://us-central1-nestjs-ionic-form-i.cloudfunctions.net/api/v1/forms/sendMails';
+    'https://us-central1-nestjs-ionic-form-i.cloudfunctions.net/api/v1/forms/sendMail';
   @Prop({ mutable: true }) locations: any = storeLocationsDropdown;
   @State() selectedLocation: string;
   @Prop() minutesStep: string;
